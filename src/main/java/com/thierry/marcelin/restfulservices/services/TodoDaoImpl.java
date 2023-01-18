@@ -47,8 +47,9 @@ public class TodoDaoImpl implements TodoDao{
     }
 
     @Override
-    public void updateTodo(int id, Todo todo) {
+    public Todo updateTodo(int id, Todo todo) {
         var updatedTodo = findById(id);
-        todos.set(updatedTodo.getId() -1, todo);
+        todo.setId(id);
+        return todos.set(updatedTodo.getId() - 1, todo);
     }
 }

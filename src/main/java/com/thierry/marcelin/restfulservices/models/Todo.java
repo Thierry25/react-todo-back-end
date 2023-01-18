@@ -2,13 +2,18 @@ package com.thierry.marcelin.restfulservices.models;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 @JsonFilter("TodoFilter")
 public class Todo {
     private int id;
     private String username;
+    @Size(min = 5, message="Please enter at least 5 characters to your description")
     private String description;
+    @FutureOrPresent(message = "Please enter a future or present date")
     private LocalDate targetDate;
     private boolean done;
 
@@ -40,6 +45,13 @@ public class Todo {
 
     public boolean isDone() {
         return done;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
