@@ -51,8 +51,9 @@ public class JwtSecurityConfig {
         return httpSecurity
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/authenticate").permitAll()
-                        .requestMatchers(PathRequest.toH2Console()).permitAll() // h2-console is a servlet and NOT
-                                                                                // recommended for a production
+                        // .requestMatchers(PathRequest.toH2Console()).permitAll() // h2-console is a
+                        // servlet and NOT
+                        // recommended for a production
                         .requestMatchers(HttpMethod.OPTIONS, "/**")
                         .permitAll()
                         .anyRequest()
@@ -79,8 +80,8 @@ public class JwtSecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails user = User.withUsername("in28minutes")
-                .password("{noop}dummy")
+        UserDetails user = User.withUsername("Thierry")
+                .password("{noop}Marcelin")
                 .authorities("read")
                 .roles("USER")
                 .build();
