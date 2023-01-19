@@ -30,4 +30,8 @@ public class TodoService {
         return todoDao.updateTodo(id, todo);
     }
 
+    public Todo addTodo(Todo todo){
+        return todoDao.addTodo(todo);
+    }
+
 }

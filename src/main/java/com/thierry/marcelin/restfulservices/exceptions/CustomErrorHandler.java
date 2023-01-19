@@ -1,7 +1,10 @@
 package com.thierry.marcelin.restfulservices.exceptions;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
@@ -23,5 +26,17 @@ public class CustomErrorHandler extends ResponseEntityExceptionHandler {
         var error = new ErrorDetails(LocalDateTime.now(), ex.getLocalizedMessage(), request.getDescription(false));
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
+
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+            HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+        //FIXME
+        var message = new StringBuilder();
+        ex.getAllErrors().forEach((msg) -> message.append(msg.getDefaultMessage()).append(" "));
+        var errorDetails = new ErrorDetails(LocalDateTime.now(), message.toString(), request.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+    }
+
+    
 
 }

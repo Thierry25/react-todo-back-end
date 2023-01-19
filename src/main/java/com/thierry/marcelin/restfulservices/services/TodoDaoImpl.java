@@ -29,6 +29,7 @@ public class TodoDaoImpl implements TodoDao{
 
     @Override
     public Todo addTodo(Todo todo) {
+        todo.setId(++todosCount);
         todos.add(todo);
         return todos.get(todos.size() -1);
     }
