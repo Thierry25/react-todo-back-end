@@ -16,9 +16,9 @@ public class TodoDaoImpl implements TodoDao{
     private static int todosCount = 0;
 
     static{
-        todos.add(new Todo(++todosCount, "thierrymarcelin", "Learn Spring Boot", LocalDate.now().plusMonths(2), false));
-        todos.add(new Todo(++todosCount, "thierrymarcelin", "Learn React", LocalDate.now().plusMonths(4), false));
-        todos.add(new Todo(++todosCount, "thierrymarcelin", "Learn Javascript", LocalDate.now().plusMonths(2), false));
+        todos.add(new Todo(++todosCount, "Thierry", "Learn Spring Boot", LocalDate.now().plusMonths(2), false));
+        todos.add(new Todo(++todosCount, "Thierry", "Learn React", LocalDate.now().plusMonths(4), false));
+        todos.add(new Todo(++todosCount, "Thierry", "Learn Javascript", LocalDate.now().plusMonths(2), false));
         todos.add(new Todo(++todosCount, "fmarcelin", "Learn DevOps", LocalDate.now().plusMonths(1), false));
         todos.add(new Todo(++todosCount, "fmarcelin", "Learn CI/CD", LocalDate.now().plusMonths(4), false));
     }
