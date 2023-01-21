@@ -2,14 +2,20 @@ package com.thierry.marcelin.restfulservices.models;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
 @JsonFilter("TodoFilter")
+@Entity
 public class Todo {
-    private int id;
+    @Id
+    @GeneratedValue
+    private Integer id;
     private String username;
     @Size(min = 5, message="Please enter at least 5 characters to your description")
     private String description;
@@ -17,7 +23,7 @@ public class Todo {
     private LocalDate targetDate;
     private boolean done;
 
-    public Todo(int id, String username, String description, LocalDate targetDate, boolean done) {
+    public Todo(Integer id, String username, String description, LocalDate targetDate, boolean done) {
         this.id = id;
         this.username = username;
         this.description = description;
@@ -27,7 +33,7 @@ public class Todo {
 
     public Todo(){}
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -50,7 +56,7 @@ public class Todo {
     public void setUsername(String username) {
         this.username = username;
     }
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -26,8 +26,8 @@ public class TodoService {
          todoDao.deleteTodo(todo);
     }
 
-    public Todo updateTodo(Integer id, Todo todo){
-        return todoDao.updateTodo(id, todo);
+    public Todo updateTodo(Todo todo){
+        return todoDao.updateTodo(todo);
     }
 
     public Todo addTodo(Todo todo){
